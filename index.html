@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Irregular Verbs</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+</head>
+<body>
+    <div class="contenedor">
+        <p class="t"></p>
+       
+        <p class="o waves-effect"></p>
+        <p class="o waves-effect"></p>
+        <p class="o waves-effect"></p>
+        
+        <a href="#">SIGUIENTE <i class="material-icons">arrow_forward</i></a>
+    </div>
+    
+    <section id="bienvenida">
+        <div>
+            <div>
+                Seleccione un modo de juego:
+                <section id="modosJuego">
+                    <div id="infinitive">Infinitive</div>
+                    <div id="pastSimple">PastSimple</div>
+                    <div id="pastParticiple">PastParticiple</div>
+                </section>
+            </div>
+        </div>
+    </section>
+    
+    <script src="js/jquery-1.12.2.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script>
+        $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+            options.async = true;
+        });
+        
+        $('#modosJuego>div').click(function(){
+            $('#bienvenida').css('display','none');
+            $('#bienvenida').css('pointer-events','none');
+            $('body').append('<script src="js/'+$(this).attr('id')+'.js"><script'+'>');
+        });
+        
+        $('.o').click(function(){
+            if($(this).attr('class')=='o waves-effect well'){
+                $(this).css('background-color', '#43a047');
+            } else {
+                $(this).css('background-color', '#d32f2f');
+            }
+        });
+    </script>
+    
+</body>
+</html>
